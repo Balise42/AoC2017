@@ -15,14 +15,14 @@ func main() {
 
 	tot := 0
 
-	for i := 0; i<40000000; i++ {
+	for i := 0; i < 40000000; i++ {
 		a = (gena * a) % mod
 		b = (genb * b) % mod
 		abin := strconv.FormatInt(a, 2)
 		bbin := strconv.FormatInt(b, 2)
 		diff := false
-		for j := 1; j<=16; j++ {
-			if abin[len(abin) - j] != bbin[len(bbin) - j] {
+		for j := 1; j <= 16; j++ {
+			if abin[len(abin)-j] != bbin[len(bbin)-j] {
 				diff = true
 				break
 			}

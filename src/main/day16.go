@@ -1,12 +1,12 @@
 package main
 
 import (
-	"os"
-	"log"
-	"io/ioutil"
-	"strings"
-	"fmt"
 	"./day16"
+	"fmt"
+	"io/ioutil"
+	"log"
+	"os"
+	"strings"
 )
 
 func main() {
@@ -30,4 +30,3 @@ func main() {
 	}
 	fmt.Println(line)
 }
-

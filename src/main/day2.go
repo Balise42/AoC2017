@@ -1,13 +1,12 @@
 package main
 
 import (
-	"os"
-	"fmt"
 	"./LineProcessor"
-	"strings"
+	"fmt"
+	"os"
 	"strconv"
+	"strings"
 )
-
 
 func main() {
 	filename := os.Args[1]

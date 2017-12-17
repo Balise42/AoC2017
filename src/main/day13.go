@@ -1,12 +1,12 @@
 package main
 
 import (
-	"os"
-	"log"
 	"bufio"
-	"strings"
-	"strconv"
 	"fmt"
+	"log"
+	"os"
+	"strconv"
+	"strings"
 )
 
 func main() {
@@ -30,7 +30,7 @@ func main() {
 
 	severity := 0
 	for layer, level := range firewall {
-		if layer % ((level - 1)*2) == 0 {
+		if layer%((level-1)*2) == 0 {
 			severity = severity + layer*level
 		}
 	}

@@ -1,9 +1,9 @@
 package day12
 
 import (
-	"os"
-	"log"
 	"bufio"
+	"log"
+	"os"
 	"strings"
 )
 
@@ -39,7 +39,7 @@ func GetConnectedComponent(graph map[string][]string, vertex string, label int, 
 	queue = append(queue, vertex)
 	for len(queue) > 0 {
 		elem := queue[0]
-		if v, ok := visited[elem] ; !ok || v == 0 {
+		if v, ok := visited[elem]; !ok || v == 0 {
 			visited[elem] = label
 			queue = append(queue, graph[elem]...)
 		}
@@ -55,7 +55,7 @@ func GetConnectedComponents(graph map[string][]string) map[string]int {
 
 	added := true
 
-	for i := 1; added ; i++ {
+	for i := 1; added; i++ {
 		added = false
 		for k, v := range visited {
 			if v == 0 {

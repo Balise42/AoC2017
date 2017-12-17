@@ -1,11 +1,11 @@
 package day7
 
 import (
-	"os"
-	"log"
 	"bufio"
-	"strings"
+	"log"
+	"os"
 	"strconv"
+	"strings"
 )
 
 type Node struct {
@@ -35,7 +35,7 @@ func CreateTree(filename string) map[string]*Node {
 
 		parts := strings.Split(left, " ")
 		nodename := parts[0]
-		nodeweight, err := strconv.Atoi(parts[1][1:len(parts[1])-1])
+		nodeweight, err := strconv.Atoi(parts[1][1 : len(parts[1])-1])
 		if err != nil {
 			log.Fatal("can't convert to int", parts[1], err)
 		}
@@ -73,7 +73,7 @@ func addNodeDependency(node string, deps string, nodelist map[string]*Node) {
 
 func addNode(nodelist map[string]*Node, name string, weight int) {
 	_, ok := nodelist[name]
-	if (!ok) {
+	if !ok {
 		nodelist[name] = &Node{name, weight, make([]string, 0, 0), make([]string, 0, 0)}
 	} else {
 		(nodelist[name]).Weight = weight

@@ -1,12 +1,12 @@
 package main
 
 import (
-	"os"
-	"log"
 	"bufio"
-	"strings"
-	"strconv"
 	"fmt"
+	"log"
+	"os"
+	"strconv"
+	"strings"
 )
 
 func main() {

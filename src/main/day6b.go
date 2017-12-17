@@ -1,13 +1,13 @@
 package main
 
 import (
-	"os"
-	"log"
-	"io/ioutil"
-	"strings"
-	"strconv"
 	"fmt"
+	"io/ioutil"
+	"log"
 	"main/day6"
+	"os"
+	"strconv"
+	"strings"
 )
 
 func main() {
@@ -41,7 +41,7 @@ func main() {
 	for i := 0; ; i++ {
 		x, ok := whereSeen(mem, seen)
 		if ok {
-			fmt.Println(i-x)
+			fmt.Println(i - x)
 			break
 		}
 		addIndex(mem, seen, i)

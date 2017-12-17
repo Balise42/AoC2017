@@ -10,12 +10,12 @@ func Hash(mem []int) string {
 	return hash
 }
 
-func Modify(mem []int) []int{
+func Modify(mem []int) []int {
 	maxi := MaxIndex(mem)
 	toRedistribute := mem[maxi]
 	mem[maxi] = 0
-	for i:=1; i<=toRedistribute; i++ {
-		mem[(maxi + i)%len(mem)] = mem[(maxi + i)%len(mem)] + 1
+	for i := 1; i <= toRedistribute; i++ {
+		mem[(maxi+i)%len(mem)] = mem[(maxi+i)%len(mem)] + 1
 	}
 	return mem
 }
@@ -31,4 +31,3 @@ func MaxIndex(mem []int) int {
 	}
 	return index
 }
-

@@ -1,11 +1,11 @@
 package main
 
 import (
-	"strconv"
-	"os"
-	"log"
-	"fmt"
 	"./day3"
+	"fmt"
+	"log"
+	"os"
+	"strconv"
 )
 
 type grid struct {
@@ -14,10 +14,10 @@ type grid struct {
 
 func newGrid() grid {
 	g := grid{make([][]int, 100)}
-	for i:= range g.array {
+	for i := range g.array {
 		g.array[i] = make([]int, 100)
 	}
-	g.set(0,0,1)
+	g.set(0, 0, 1)
 	return g
 }
 

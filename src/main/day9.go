@@ -1,11 +1,11 @@
 package main
 
 import (
-	"os"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"main/day9"
-	"fmt"
+	"os"
 )
 
 func main() {

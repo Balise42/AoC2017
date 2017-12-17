@@ -1,9 +1,9 @@
 package main
 
 import (
+	"fmt"
 	"main/day8"
 	"os"
-	"fmt"
 )
 
 func main() {

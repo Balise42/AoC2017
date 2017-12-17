@@ -1,13 +1,12 @@
 package main
 
 import (
-	"os"
-	"fmt"
 	"./LineProcessor"
-	"strings"
+	"fmt"
+	"os"
 	"strconv"
+	"strings"
 )
-
 
 func main() {
 	filename := os.Args[1]
@@ -20,11 +19,11 @@ func main() {
 
 		for i, n1 := range nums {
 			for _, n2 := range nums[i+1:] {
-				if n1 % n2 == 0 {
-					return n1/n2
+				if n1%n2 == 0 {
+					return n1 / n2
 				}
-				if n2 % n1 == 0 {
-					return n2/n1
+				if n2%n1 == 0 {
+					return n2 / n1
 				}
 			}
 		}

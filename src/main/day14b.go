@@ -1,10 +1,10 @@
 package main
 
 import (
-	"main/day10"
-	"strconv"
 	"fmt"
+	"main/day10"
 	"main/day12"
+	"strconv"
 )
 
 func main() {
@@ -12,14 +12,14 @@ func main() {
 
 	grid := make([]string, 128, 128)
 
-	for i := 0; i<128; i++ {
-		hash := day10.ComputeHash(input + "-"+strconv.FormatInt(int64(i), 10))
+	for i := 0; i < 128; i++ {
+		hash := day10.ComputeHash(input + "-" + strconv.FormatInt(int64(i), 10))
 		grid[i] = day10.ToBinary(hash)
 	}
 
 	graph := createGraph(grid)
 	components := day12.GetConnectedComponents(graph)
-	max := 	0
+	max := 0
 	for _, v := range components {
 		if v > max {
 			max = v
@@ -32,11 +32,11 @@ func main() {
 func createGraph(grid []string) map[string][]string {
 	graph := make(map[string][]string)
 
-	for i := 0; i<128; i++ {
-		for j:= 0; j<128; j++ {
+	for i := 0; i < 128; i++ {
+		for j := 0; j < 128; j++ {
 			if grid[i][j] == '1' {
 				if _, ok := graph[key(i, j)]; !ok {
-					graph[key(i,j)] = make([]string, 0)
+					graph[key(i, j)] = make([]string, 0)
 				}
 				addNeighbors(grid, i, j, graph)
 			}

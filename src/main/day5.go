@@ -1,10 +1,10 @@
 package main
 
 import (
-	"os"
-	"log"
 	"bufio"
 	"fmt"
+	"log"
+	"os"
 	"strconv"
 )
 
@@ -16,7 +16,6 @@ func main() {
 	if err != nil {
 		log.Fatal("can't open file", err)
 	}
-
 
 	stat, err := file.Stat()
 	if err != nil {

@@ -1,12 +1,11 @@
 package main
 
 import (
-	"os"
-	"main/day7"
 	"fmt"
 	"log"
+	"main/day7"
+	"os"
 )
-
 
 func main() {
 	filename := os.Args[1]

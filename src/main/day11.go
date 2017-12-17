@@ -1,11 +1,11 @@
 package main
 
 import (
-	"os"
-	"io/ioutil"
-	"strings"
-	"fmt"
 	"./day11"
+	"fmt"
+	"io/ioutil"
+	"os"
+	"strings"
 )
 
 func main() {
@@ -27,11 +27,10 @@ func main() {
 	day11.CancelCompletely(tally, "ne", "sw")
 	day11.CancelToNS(tally, "ne", "nw", "n")
 	day11.CancelToNS(tally, "se", "sw", "s")
-	day11.CancelCompletely(tally,"n", "s")
+	day11.CancelCompletely(tally, "n", "s")
 
 	sum := 0
 	for _, v := range tally {
 		sum = sum + v
 	}
 }
-

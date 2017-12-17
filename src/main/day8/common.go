@@ -1,20 +1,20 @@
 package day8
 
 import (
-	"os"
-	"log"
 	"bufio"
-	"strings"
+	"log"
+	"os"
 	"strconv"
+	"strings"
 )
 
 type Instruction struct {
-	Variable string
-	Operator string
-	Operand int
+	Variable          string
+	Operator          string
+	Operand           int
 	Conditionvariable string
 	Conditionoperator string
-	Conditionoperand int
+	Conditionoperand  int
 }
 
 func NewInstruction(variable string, operator string, operand string, condvariable string, conditionoperator string, conditionoperand string) Instruction {
@@ -49,7 +49,7 @@ func ParseFileToInstructions(filename string) []Instruction {
 	return result
 }
 
-func ProcessInstructions(prog []Instruction) (map[string]int, int){
+func ProcessInstructions(prog []Instruction) (map[string]int, int) {
 	max := -99999999
 	state := make(map[string]int)
 	for _, instruction := range prog {

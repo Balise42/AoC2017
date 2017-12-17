@@ -1,12 +1,12 @@
 package main
 
 import (
-	"os"
-	"math"
-	"fmt"
-	"strconv"
-	"log"
 	"./day3"
+	"fmt"
+	"log"
+	"math"
+	"os"
+	"strconv"
 )
 
 func main() {

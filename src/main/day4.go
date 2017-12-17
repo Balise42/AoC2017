@@ -2,14 +2,14 @@ package main
 
 import (
 	"./LineProcessor"
+	"fmt"
 	"os"
 	"strings"
-	"fmt"
 )
 
 func main() {
 	filename := os.Args[1]
-	res := LineProcessor.SumLines(filename, func (line string) int64 {
+	res := LineProcessor.SumLines(filename, func(line string) int64 {
 		wordmap := make(map[string]bool)
 		words := strings.Split(line, " ")
 		for _, word := range words {

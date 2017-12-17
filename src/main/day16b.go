@@ -1,12 +1,12 @@
 package main
 
 import (
-	"strings"
 	"fmt"
-	"os"
-	"log"
 	"io/ioutil"
+	"log"
 	"main/day16"
+	"os"
+	"strings"
 )
 
 func main() {
@@ -30,14 +30,14 @@ func main() {
 	seen[line] = 0
 
 	numit := -1
-	for i := 1; numit == -1 ; i++ {
+	for i := 1; numit == -1; i++ {
 		for _, move := range moves {
 			line = day16.ApplyMove(move, line)
 		}
 		if it, ok := seen[line]; ok {
 			fmt.Println(line)
 			fmt.Println(it, i)
-			numit = (1000000000-it) % i
+			numit = (1000000000 - it) % i
 		} else {
 			seen[line] = i
 		}
@@ -46,7 +46,7 @@ func main() {
 
 	line = "abcdefghijklmnop"
 
-	for i:= 0; i<numit; i++ {
+	for i := 0; i < numit; i++ {
 		for _, move := range moves {
 			line = day16.ApplyMove(move, line)
 		}

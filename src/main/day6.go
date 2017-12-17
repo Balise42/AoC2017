@@ -1,13 +1,13 @@
 package main
 
 import (
-	"os"
-	"log"
-	"io/ioutil"
-	"strings"
-	"strconv"
 	"fmt"
+	"io/ioutil"
+	"log"
 	"main/day6"
+	"os"
+	"strconv"
+	"strings"
 )
 
 func main() {
@@ -52,7 +52,6 @@ func hasSeen(mem []int, seen map[string]bool) bool {
 	_, ok := seen[day6.Hash(mem)]
 	return ok
 }
-
 
 func add(mem []int, seen map[string]bool) {
 	seen[day6.Hash(mem)] = true

@@ -1,8 +1,8 @@
 package day9
 
 import (
-	"testing"
 	"reflect"
+	"testing"
 )
 
 func TestCleanData1(t *testing.T) {

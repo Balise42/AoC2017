@@ -1,10 +1,9 @@
 package LineProcessor
 
 import (
-	"os"
 	"bufio"
+	"os"
 )
-
 
 func SumLines(filename string, processor func(string) int64) int64 {
 	file, _ := os.Open(filename)
