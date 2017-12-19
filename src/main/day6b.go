@@ -1,10 +1,10 @@
 package main
 
 import (
+	"day6"
 	"fmt"
 	"io/ioutil"
 	"log"
-	"main/day6"
 	"os"
 	"strconv"
 	"strings"

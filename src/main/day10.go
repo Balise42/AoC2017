@@ -1,7 +1,7 @@
 package main
 
 import (
-	"./day10"
+	"day10"
 	"fmt"
 	"strconv"
 	"strings"

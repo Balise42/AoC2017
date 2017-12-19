@@ -1,7 +1,7 @@
 package main
 
 import (
-	"./day3"
+	"day3"
 	"fmt"
 	"log"
 	"os"

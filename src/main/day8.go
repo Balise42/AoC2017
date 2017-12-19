@@ -1,8 +1,8 @@
 package main
 
 import (
+	"day8"
 	"fmt"
-	"main/day8"
 	"os"
 )
 

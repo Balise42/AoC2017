@@ -1,7 +1,7 @@
 package main
 
 import (
-	"./day11"
+	"day11"
 	"fmt"
 	"io/ioutil"
 	"os"

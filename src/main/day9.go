@@ -1,10 +1,10 @@
 package main
 
 import (
+	"day9"
 	"fmt"
 	"io/ioutil"
 	"log"
-	"main/day9"
 	"os"
 )
 

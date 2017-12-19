@@ -1,9 +1,9 @@
 package main
 
 import (
+	"day7"
 	"fmt"
 	"log"
-	"main/day7"
 	"os"
 )
 

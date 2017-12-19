@@ -1,8 +1,8 @@
 package main
 
 import (
+	"day10"
 	"fmt"
-	"main/day10"
 )
 
 func main() {

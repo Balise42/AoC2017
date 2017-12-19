@@ -1,9 +1,9 @@
 package main
 
 import (
+	"day10"
+	"day12"
 	"fmt"
-	"main/day10"
-	"main/day12"
 	"strconv"
 )
 

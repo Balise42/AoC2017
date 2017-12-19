@@ -1,7 +1,7 @@
 package main
 
 import (
-	"./day12"
+	"day12"
 	"fmt"
 	"os"
 )
