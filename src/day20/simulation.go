@@ -1,7 +1,5 @@
 package day20
 
-import "fmt"
-
 type Pair struct {
 	A int
 	B int
@@ -44,36 +42,49 @@ func dist(a Vector, b Vector) int {
 
 func (sim *Simulation) Simulate() {
 	for len(sim.Candidates) > 0 {
-		fmt.Println(len(sim.Particles))
-		fmt.Println(len(sim.Candidates))
 		newState := make(map[int]Particle)
 		for key, val := range sim.Particles {
 			a := Vector(val.A)
-			v := Vector{val.V.X + a.X, val.A.Y + a.Y, val.A.Z + a.Z}
+			v := Vector{val.V.X + a.X, val.V.Y + a.Y, val.V.Z + a.Z}
 			p := Vector{val.P.X + v.X, val.P.Y + v.Y, val.P.Z + v.Z}
 			newState[key] = Particle{key, p, v, a}
 		}
-		for p, delta := range sim.Candidates {
-			if newState[p.A].P == newState[p.B].P {
-				delete(newState, p.A)
-				delete(newState, p.B)
-				for k := range sim.Candidates {
-					fmt.Println(k, p)
-					if k.A == p.A || k.B == p.A || k.A == p.B || k.B == p.B {
-						delete(sim.Candidates, k)
-					}
-				}
-			}
-			newDeltaP := dist(newState[p.A].P, newState[p.B].P)
-			newDeltaV := dist(newState[p.A].V, newState[p.B].V)
-			if delta.DeltaP <= newDeltaP && delta.DeltaV <= newDeltaV {
-				delete(sim.Candidates, p)
-			} else {
-				if _, ok := sim.Candidates[p]; ok {
-					sim.Candidates[p] = Delta{newDeltaP, newDeltaV}
+		toDelete := computeColliding(newState)
+		for k := range toDelete {
+			delete(newState, k)
+			for c := range sim.Candidates {
+				if c.A == k || c.B == k {
+					delete(sim.Candidates, c)
 				}
 			}
 		}
 		sim.Particles = newState
+		deleteCandidates(sim)
 	}
+}
+
+func deleteCandidates(sim *Simulation) {
+	for k, v := range sim.Candidates {
+		if dist(sim.Particles[k.A].P, sim.Particles[k.B].P) >= v.DeltaP && dist(sim.Particles[k.A].V, sim.Particles[k.B].V) >= v.DeltaV {
+			delete(sim.Candidates, k)
+		} else {
+			sim.Candidates[k] = Delta{dist(sim.Particles[k.A].P, sim.Particles[k.B].P), dist(sim.Particles[k.A].V, sim.Particles[k.B].V)}
+		}
+	}
+}
+
+func computeColliding(particles map[int]Particle) map[int]bool {
+	toDelete := make(map[int]bool)
+	for k1, v1 := range particles {
+		for k2, v2 := range particles {
+			if k1 == k2 {
+				continue
+			}
+			if v1.P == v2.P {
+				toDelete[k1] = true
+				toDelete[k2] = true
+			}
+		}
+	}
+	return toDelete
 }
