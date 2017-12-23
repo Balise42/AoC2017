@@ -32,14 +32,15 @@ func main() {
 	mux = make([]sync.Mutex, 2, 2)
 
 	go run(program, 0)
-
-	run(program, 1)
-
+	go run(program, 1)
+	var input string
+	fmt.Scanln(&input)
 }
 
 func run(program [][]string, prog int) {
 	counter := 0
 	registers := make(map[string]int)
+	registers["p"] = prog
 	count := 0
 	for {
 		if counter >= len(program) {
@@ -51,9 +52,39 @@ func run(program [][]string, prog int) {
 			if err != nil {
 				val = registers[instruction[1]]
 			}
+			if prog == 0 {
+				count = count + 1
+				fmt.Println(count)
+			}
 			mux[prog].Lock()
 			q[prog] = append(q[prog], val)
 			mux[prog].Unlock()
+		} else if instruction[0] == "rcv" {
+			if prog == 0 {
+				for {
+					mux[1].Lock()
+					if len(q[1]) != 0 {
+						mux[1].Unlock()
+						break
+					}
+					mux[1].Unlock()
+				}
+				mux[1].Lock()
+				registers[instruction[1]], q[1] = q[1][0], q[1][1:]
+				mux[1].Unlock()
+			} else {
+				for {
+					mux[0].Lock()
+					if len(q[0]) != 0 {
+						mux[0].Unlock()
+						break
+					}
+					mux[0].Unlock()
+				}
+				mux[0].Lock()
+				registers[instruction[1]], q[0] = q[0][0], q[0][1:]
+				mux[0].Unlock()
+			}
 		} else if instruction[0] == "set" {
 			val, err := strconv.Atoi(instruction[2])
 			if err != nil {
@@ -93,32 +124,6 @@ func run(program [][]string, prog int) {
 				registers[instruction[1]] = init % registers[instruction[2]]
 			} else {
 				registers[instruction[1]] = init % val
-			}
-		} else if instruction[0] == "rcv" {
-			if prog == 0 {
-				for {
-					mux[1].Lock()
-					if len(q[1]) != 0 {
-						break
-					}
-					mux[1].Unlock()
-				}
-				mux[1].Lock()
-				registers[instruction[1]], q[1] = q[1][0], q[1][1:]
-				mux[1].Unlock()
-			} else {
-				for {
-					mux[0].Lock()
-					if len(q[0]) != 0 {
-						break
-					}
-					mux[0].Unlock()
-				}
-				mux[0].Lock()
-				registers[instruction[1]], q[0] = q[0][0], q[0][1:]
-				mux[0].Unlock()
-				count = count + 1
-				fmt.Println(count)
 			}
 		} else {
 			val, err := strconv.Atoi(instruction[1])
