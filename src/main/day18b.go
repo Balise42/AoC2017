@@ -52,7 +52,7 @@ func run(program [][]string, prog int) {
 			if err != nil {
 				val = registers[instruction[1]]
 			}
-			if prog == 0 {
+			if prog == 1 {
 				count = count + 1
 				fmt.Println(count)
 			}
